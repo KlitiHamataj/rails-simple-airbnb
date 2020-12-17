@@ -1,0 +1,27 @@
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <h1><%= link_to 'Simple Airbnb ', flats_path %></h1>
+  <%= link_to "Add a new flat", new_flat_path(@flat), class: "btn btn-success" %>
+</div>
+  <div class="container">
+    <div class="row">
+      <% @flats.each do |flat| %>
+        <div class="card" style="width: 18rem; margin: 10px">
+           <img class="card-img-top" src="https://source.unsplash.com/1600x900/?flats,interior" alt="Card image cap">
+           <div class="card-body">
+             <h5 class="card-title"><%= flat.name %></h5>
+             <p class="card-text"><%= flat.description %></p>
+             <p class="card-text"><%= flat.address %></p>
+             <p class="card-text">Guests:<%= flat.number_of_guests %>  Price: €<%= flat.price_per_night %></p>
+             <%= link_to "View", flat_path(flat), class: "btn btn-primary" %>
+             <%= link_to "Edit", edit_flat_path(flat), class: "btn btn-info" %>
+             <%= link_to "Delete", flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+           </div>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <br>
+
+  </div>
+
